@@ -1,0 +1,10 @@
+pandas
+numpy
+matplotlib
+scikit-learn
+scipy
+python-box
+ensure
+pyYAML
+Flask
+-e .
