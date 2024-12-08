@@ -1,2 +1,5 @@
 COLUMNS:
-  col1: str
+  TV: float64
+  radio: float64
+  newspaper: float64
+  sales: float64
