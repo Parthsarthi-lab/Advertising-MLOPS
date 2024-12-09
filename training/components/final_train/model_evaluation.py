@@ -3,6 +3,8 @@ import os
 import joblib
 from pathlib import Path
 
+import numpy as np
+
 from training.exception import ModelEvaluationError, handle_exception
 from training.custom_logging import info_logger, error_logger
 
@@ -31,12 +33,21 @@ class ModelEvaluation:
         try:
             info_logger.info("Loading test data for final model evaluation")
 
+            test_data_path = os.path.join(self.config.test_data_path, "Test.npz")
+            test_data = np.load(test_data_path, allow_pickle=True)
+
+            xtest = test_data["xtest"]
+            ytest = test_data["ytest"]
+
+
             info_logger.info("Loaded test data for final model evaluation")
+
+            return xtest, ytest
 
         except Exception as e:
             handle_exception(e, ModelEvaluationError)
 
-    def evaluate_model(self, final_model, test_data):
+    def evaluate_model(self, final_model, xtest, ytest):
         try:
             info_logger.info("Model evaluation started")
 
@@ -51,7 +62,7 @@ if __name__ == "__main__":
 
     model_evluation = ModelEvaluation(config = model_evaluation_config)
     final_model = model_evluation.load_model()
-    test_data = model_evluation.load_test_data()
+    xtest, ytest = model_evluation.load_test_data()
 
-    model_evluation.evaluate_model(final_model, test_data)
+    model_evluation.evaluate_model(final_model, xtest, ytest)
     
