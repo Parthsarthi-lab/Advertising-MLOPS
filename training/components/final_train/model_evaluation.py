@@ -13,7 +13,7 @@ from training.configuration_manager.configuration import ConfigurationManager
 
 class ModelEvaluation:
     def __init__(self, config: ModelEvaluationConfig):
-        self.conifg = config
+        self.config = config
 
     def load_model(self):
         try:
@@ -56,7 +56,7 @@ class ModelEvaluation:
             r2 = final_model.score(xtest, ytest)
 
             with open(self.config.STATUS_FILE, "w") as f:
-                f.write(f"Model Evaluation status: True")
+                f.write(f"Model Evaluation status: True \n")
                 f.write(f"RMSE: {rmse} and R2: {r2}")
 
             info_logger.info("Model evaluation completed")
