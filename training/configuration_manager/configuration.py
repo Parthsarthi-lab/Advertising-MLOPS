@@ -95,7 +95,7 @@ class ConfigurationManager:
             final_train_data_path=config.final_train_data_path,
             final_test_data_path=config.final_test_data_path,
             metric_file_name_rf=config.metric_file_name_rf,
-            best_model_params_rf=config.best_model_params_rf,
+            best_model_params=config.best_model_params,
             final_model_name=config.final_model_name,
             STATUS_FILE= config.STATUS_FILE
         )

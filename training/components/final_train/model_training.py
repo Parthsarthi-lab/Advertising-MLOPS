@@ -1,8 +1,10 @@
 import sys
 import os
+import json
 from pathlib import Path
 
 import numpy as np
+from sklearn.linear_model import LinearRegression
 
 from training.exception import ModelTrainingError, handle_exception
 from training.custom_logging import info_logger, error_logger
@@ -13,6 +15,13 @@ from training.configuration_manager.configuration import ConfigurationManager
 class ModelTrainer:
     def __init__(self, config: ModelTrainerConfig):
         self.config = config
+
+
+    @staticmethod
+    def filter_hyperparams(params):
+        # Extract only the parameters related to the classifier (RandomForestClassifier)
+        hyperparams = {key.replace('regressor__', ''): value for key, value in params.items() if key.startswith('classifier__')}
+        return hyperparams
 
     def load_transformed_data(self):
         try:
@@ -40,8 +49,23 @@ class ModelTrainer:
         try:
             info_logger.info("Training final model started")
 
+            # Construct the full path to the hyperparameters file
+            hyperparams_file_path = os.path.join(self.config.best_model_params, "best_params.json")
+            
+            # Load the hyperparameters from the JSON file
+            with open(hyperparams_file_path, 'r') as f:
+                hyperparams = json.load(f)
+
+            # Filter the hyperparameters of the linear regression model
+            hyperparams = self.filter_hyperparams(hyperparams)
+
+            final_model = LinearRegression(**hyperparams)
+
+            final_model.fit(xtrain, ytrain)
 
             info_logger.info("Final model trained")
+
+            return final_model
         except Exception as e:
             handle_exception(e, ModelTrainingError)
 

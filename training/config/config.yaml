@@ -37,7 +37,7 @@ model_trainer:
   #best_cross_val_models_rf:  artifacts/cross_val/random_search_models/random_forest
   final_model_name: artifacts/model_trainer/final_model.joblib
   metric_file_name_rf: artifacts/cross_val/random_search_models/random_forest/metrics
-  best_model_params_rf: artifacts/cross_val/random_search_models/random_forest/best_model_params
+  best_model_params: artifacts/cross_val/best_model_params
   STATUS_FILE: artifacts/model_trainer/status.txt
 
 model_evaluation:
