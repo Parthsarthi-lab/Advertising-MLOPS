@@ -2,6 +2,8 @@ import os
 import sys
 from pathlib import Path
 
+import numpy as np
+
 from training.custom_logging import info_logger, error_logger
 from training.exception import FeatureEngineeringError, handle_exception
 
@@ -15,6 +17,17 @@ class FeatureEngineering:
     def load_saved_data(self):
         try:
             info_logger.info("Loading Final Training Saved Data for Transformation")
+
+            final_train_data_path = os.path.join(self.config.final_train_data_path, 'Train.npz')
+            final_test_data_path = os.path.join(self.config.final_test_data_path,"Test.npz")
+
+            final_train_data = np.load(final_train_data_path, allow_pickle=True)
+            final_test_data = np.load(final_test_data_path, allow_pickle=True)
+
+            xtrain = final_train_data["xtrain"]
+            xtest = final_test_data["xtest"]
+            ytrain = final_train_data["ytrain"]
+            ytest = final_test_data["ytest"]
 
             info_logger.info("Loaded Final Training Saved Data for Transformation")
 
