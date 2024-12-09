@@ -3,6 +3,10 @@ import sys
 from pathlib import Path
 
 import numpy as np
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import Pipeline
+import joblib
 
 from training.custom_logging import info_logger, error_logger
 from training.exception import FeatureEngineeringError, handle_exception
@@ -38,6 +42,22 @@ class FeatureEngineering:
     def transform_data(self, xtrain, xtest, ytrain, ytest):
         try:
             info_logger.info("Transforming Final Training Data")
+
+            transform_pipeline = Pipeline(steps=[
+                ('imputer', SimpleImputer(strategy='mean')),  # Missing value imputation
+                ('scaler', StandardScaler())                 # Standardization
+            ])
+
+            transform_pipeline.fit(xtrain)
+            
+            # Saving the feature_transformer pipeline as artifact
+            # Save the pipeline
+            pipeline_path = os.path.join(self.config.root_dir,"pipeline.joblib")
+            joblib.dump(transform_pipeline, pipeline_path)
+
+            # Transforming xtrain and xtest
+            xtrain = transform_pipeline.transform(xtrain)
+            xtest = transform_pipeline.tansform(xtest)
 
             info_logger.info("Transformed Final Training Data")
 
