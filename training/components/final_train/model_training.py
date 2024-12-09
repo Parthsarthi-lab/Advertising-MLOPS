@@ -74,13 +74,13 @@ class ModelTrainer:
         try:
             info_logger.info("Saving final model started")
 
-            model_path = self.config.root_dir
+            model_path = os.path.join(self.config.root_dir, "final_model.joblib")
             joblib.dump(model, model_path)
 
 
             with open(self.config.STATUS_FILE, "w") as f:
                 f.write(f"Model Training status: True")
-                
+
             info_logger.info("Final model saved")
         except Exception as e:
             handle_exception(e, ModelTrainingError)
