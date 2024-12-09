@@ -51,6 +51,14 @@ class ModelEvaluation:
         try:
             info_logger.info("Model evaluation started")
 
+            y_pred = final_model.predict(xtest)
+            rmse = np.sqrt(np.mean((ytest - y_pred)**2))
+            r2 = final_model.score(xtest, ytest)
+
+            with open(self.config.STATUS_FILE, "w") as f:
+                f.write(f"Model Evaluation status: True")
+                f.write(f"RMSE: {rmse} and R2: {r2}")
+
             info_logger.info("Model evaluation completed")
         except Exception as e:
             handle_exception(e, ModelEvaluationError)
