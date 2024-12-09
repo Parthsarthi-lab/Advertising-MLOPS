@@ -57,7 +57,7 @@ class FeatureEngineering:
 
             # Transforming xtrain and xtest
             xtrain = transform_pipeline.transform(xtrain)
-            xtest = transform_pipeline.tansform(xtest)
+            xtest = transform_pipeline.transform(xtest)
 
             info_logger.info("Transformed Final Training Data")
 
@@ -77,8 +77,13 @@ class FeatureEngineering:
             np.savez(os.path.join(final_transform_data_path, 'Test.npz'),  xtest=xtest, ytest=ytest)
 
             info_logger.info("Saved Final Training Transformed Data")
+
+            with open(self.config.STATUS_FILE, "w") as f:
+                f.write(f"Feature Engineering status: True")
+
         except Exception as e:
             handle_exception(e, FeatureEngineeringError)
+            
 
 if __name__ == "__main__":
     config = ConfigurationManager()
