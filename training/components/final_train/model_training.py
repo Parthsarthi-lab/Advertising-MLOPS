@@ -14,19 +14,25 @@ class ModelTrainer:
 
     def load_transformed_data(self):
         try:
-            pass
+            info_logger.info("Loading Final Training Transformed Data")
+
+            info_logger.info("Loaded Final Training Transformed Data")
         except Exception as e:
             handle_exception(e, ModelTrainingError)
 
     def train_model(self, xtrain, xtest, ytrain, ytest):
         try:
-            pass
+            info_logger.info("Training final model started")
+
+            info_logger.info("Final model trained")
         except Exception as e:
             handle_exception(e, ModelTrainingError)
 
     def save_model(self, model):
         try:
-            pass
+            info_logger.info("Saving final model started")
+
+            info_logger.info("Final model saved")
         except Exception as e:
             handle_exception(e, ModelTrainingError)
 
