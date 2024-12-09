@@ -92,8 +92,8 @@ class ConfigurationManager:
 
         model_trainer_config = ModelTrainerConfig(
             root_dir = config.root_dir,
-            train_data_path=config.train_data_path,
-            test_data_path=config.test_data_path,
+            final_train_data_path=config.final_train_data_path,
+            final_test_data_path=config.final_test_data_path,
             metric_file_name_rf=config.metric_file_name_rf,
             best_model_params_rf=config.best_model_params_rf,
             final_model_name=config.final_model_name,

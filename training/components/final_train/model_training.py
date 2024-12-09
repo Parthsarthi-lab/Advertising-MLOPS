@@ -2,6 +2,8 @@ import sys
 import os
 from pathlib import Path
 
+import numpy as np
+
 from training.exception import ModelTrainingError, handle_exception
 from training.custom_logging import info_logger, error_logger
 
@@ -16,13 +18,28 @@ class ModelTrainer:
         try:
             info_logger.info("Loading Final Training Transformed Data")
 
+            final_train_data_path = os.path.join(self.config.final_train_data_path, 'Train.npz')
+            final_test_data_path = os.path.join(self.config.final_test_data_path,"Test.npz")
+
+            final_train_data = np.load(final_train_data_path, allow_pickle=True)
+            final_test_data = np.load(final_test_data_path, allow_pickle=True)
+
+            xtrain = final_train_data["xtrain"]
+            xtest = final_test_data["xtest"]
+            ytrain = final_train_data["ytrain"]
+            ytest = final_test_data["ytest"]
+
+
             info_logger.info("Loaded Final Training Transformed Data")
+
+            return xtrain, xtest, ytrain, ytest
         except Exception as e:
             handle_exception(e, ModelTrainingError)
 
     def train_model(self, xtrain, xtest, ytrain, ytest):
         try:
             info_logger.info("Training final model started")
+
 
             info_logger.info("Final model trained")
         except Exception as e:
