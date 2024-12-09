@@ -1,5 +1,6 @@
 import sys
 import os
+import joblib
 from pathlib import Path
 
 from training.exception import ModelEvaluationError, handle_exception
@@ -16,7 +17,12 @@ class ModelEvaluation:
         try:
             info_logger.info("Loading  final model from artifacts folder")
             
+            model_path = os.path.join(self.config.model_path, "final_model.joblib")
+            final_model = joblib.load(model_path)
+
             info_logger.info("Final model loaded from artifacts folder")
+
+            return final_model
         except Exception as e:
             handle_exception(e, ModelEvaluationError)
 

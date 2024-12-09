@@ -40,7 +40,7 @@ model_trainer:
 model_evaluation:
   root_dir: artifacts/model_evaluation
   test_data_path: artifacts/feature_engineering
-  model_path: artifacts/model_trainer/final_model.joblib
+  model_path: artifacts/model_trainer
   metric_file: artifacts/model_evaluation/metrics
   STATUS_FILE: artifacts/model_evaluation/status.txt
 
