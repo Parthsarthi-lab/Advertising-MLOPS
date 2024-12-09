@@ -69,6 +69,13 @@ class FeatureEngineering:
         try:
             info_logger.info("Saving Final Training Transformed Data")
 
+            final_transform_data_path = self.config.root_dir
+            
+            # Save xtrain and ytrain  to Train.npz
+            # Save xtest and ytest to Test.npz
+            np.savez(os.path.join(final_transform_data_path, 'Train.npz'), xtrain=xtrain, ytrain=ytrain)
+            np.savez(os.path.join(final_transform_data_path, 'Test.npz'),  xtest=xtest, ytest=ytest)
+
             info_logger.info("Saved Final Training Transformed Data")
         except Exception as e:
             handle_exception(e, FeatureEngineeringError)
