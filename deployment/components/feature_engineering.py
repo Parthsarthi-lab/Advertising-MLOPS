@@ -1,6 +1,6 @@
 from training.custom_logging import info_logger, error_logger
 from training.exception import FeatureEngineeringError, handle_exception
-
+import numpy as np
 import sys
 import os
 from pathlib import Path
@@ -20,3 +20,12 @@ class FeatureEngineering:
             return transformed_data
         except Exception as e:
             handle_exception(e, FeatureEngineeringError)
+
+
+if __name__ == "__main__":
+
+    data = np.array([[122,34.5,89]])
+    feature_engineering = FeatureEngineering()
+    transformed_data = feature_engineering.transform_data(data)
+    print(transformed_data)
+
