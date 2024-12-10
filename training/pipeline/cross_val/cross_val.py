@@ -4,9 +4,9 @@ from training.custom_logging import info_logger
 import sys
 import gc
 
-PIPELINE = "Nested Cross Validation Training Pipeline"
+PIPELINE = "Cross Validation Training Pipeline"
 
-class NestedCrossValPipeline:
+class CrossValPipeline:
 
     def __init__(self):
         pass
