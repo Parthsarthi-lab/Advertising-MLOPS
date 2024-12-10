@@ -1,5 +1,5 @@
-from training.custom_logging import info_logger, error_logger
-from training.exception import FeatureEngineeringError, handle_exception
+from deployment.custom_logging import info_logger, error_logger
+from deployment.exception import FeatureEngineeringError, handle_exception
 import numpy as np
 import sys
 import os
