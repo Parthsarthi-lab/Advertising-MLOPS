@@ -32,11 +32,18 @@ class DataIngestion:
                 shutil.copy(self.config.source, self.config.data_dir)
                 status = True
 
+                
+
                 with open(self.config.STATUS_FILE, "w") as f:
                     f.write(f"Data Ingestion status: {status}")
-
+            else:
+                status= True
+                with open(self.config.STATUS_FILE, "w") as f:
+                    f.write(f"Data Ingestion status: {status}")
+           
             info_logger.info(f"Data Ingestion Component completed")
         except Exception as e:
+            status = False
             with open(self.config.STATUS_FILE, "w") as f:
                 f.write(f"Data Ingestion status: {status}")
 

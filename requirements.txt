@@ -7,4 +7,5 @@ python-box
 ensure
 pyYAML
 Flask
+pytest
 -e .
