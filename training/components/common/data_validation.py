@@ -40,10 +40,12 @@ class DataValidation:
                         status = False
                         with open(self.config.STATUS_FILE, "w") as f:
                             f.write(f"Data Validation status: {status}")
+                        break
                 else:
                     status = False
                     with open(self.config.STATUS_FILE, "w") as f:
                         f.write(f"Data Validation status: {status}")
+                    break
             
             info_logger.info("Data Validation Component completed")
                 
