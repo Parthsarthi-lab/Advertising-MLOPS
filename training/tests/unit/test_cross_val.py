@@ -64,21 +64,25 @@ def test_load_ingested_data(cross_val_config):
 
 def test_split_data_for_final_train(cross_val_config):
     cross_val = CrossVal(config=cross_val_config)
-    X,y = cross_val.load_ingested_data()
+    X = pd.DataFrame({"TV": [1, 2, 3, 4], "radio": [5, 6, 7, 8], "newspaper": [9, 10, 11, 12]})
+    y = pd.Series([10, 20, 30, 40])
 
     xtrain, xtest, ytrain, ytest = cross_val.split_data_for_final_train(X,y)
 
-    assert xtrain.shape == (2, 3)
+    assert xtrain.shape == (3, 3)
     assert xtest.shape == (1, 3)
-    assert ytrain.shape == (2,)
+    assert ytrain.shape == (3,)
     assert ytest.shape == (1,)
 
 @patch("numpy.savez")
 def test_save_data_for_final_train(mock_savez,cross_val_config):
     cross_val = CrossVal(config=cross_val_config)
-    X,y = cross_val.load_ingested_data()
-
-    xtrain, xtest, ytrain, ytest = cross_val.split_data_for_final_train(X,y)
+    xtrain, xtest, ytrain, ytest = (
+        np.array([[1, 2], [3, 4]]),
+        np.array([[5, 6]]),
+        np.array([10, 20]),
+        np.array([30])
+    )
 
     cross_val.save_data_for_final_train(xtrain, xtest, ytrain, ytest)
 
