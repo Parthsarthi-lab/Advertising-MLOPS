@@ -21,7 +21,7 @@ class ModelTrainer:
     @staticmethod
     def filter_hyperparams(params):
         # Extract only the parameters related to the classifier (RandomForestClassifier)
-        hyperparams = {key.replace('regressor__', ''): value for key, value in params.items() if key.startswith('classifier__')}
+        hyperparams = {key.replace('regressor__', ''): value for key, value in params.items() if key.startswith('regressor__')}
         return hyperparams
 
     def load_transformed_data(self):
@@ -59,7 +59,7 @@ class ModelTrainer:
 
             # Filter the hyperparameters of the linear regression model
             hyperparams = self.filter_hyperparams(hyperparams)
-
+            
             final_model = LinearRegression(**hyperparams)
 
             final_model.fit(xtrain, ytrain)
