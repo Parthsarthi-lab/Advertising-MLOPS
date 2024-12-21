@@ -148,6 +148,10 @@ class CrossVal:
                 best_params = grid_search.best_params_
                 best_score = grid_search.best_score_
 
+                with open(self.config.STATUS_FILE, "a") as f:
+                    f.write(f"Best params for Model: {str(best_params)}\n")
+                    f.write(f"Best scoring(R2) for Model: {str(best_score)}\n")
+
                 mlflow.log_params(best_params)
                 mlflow.log_metric("best_score", best_score)
 
@@ -159,7 +163,7 @@ class CrossVal:
                 signature = infer_signature(X, y_pred)
 
                 # Save the best model parameters as a JSON file
-                best_model_params_path = os.path.join(self.config.best_model_params, 'best_params.json')
+                best_model_params_path = os.path.join(self.config.best_model_params, f'best_params.json')
                 best_model_params = grid_search.best_estimator_.get_params()
                 serializable_params = {k: v for k, v in best_model_params.items() if self.is_json_serializable(v)}
 
