@@ -1,0 +1,26 @@
+artifact_path: intermediate_models
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.7
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.5.2
+mlflow_version: 2.19.0
+model_size_bytes: 2079
+model_uuid: 8e80ccaa3b2e4d788c8accdd93e085cd
+run_id: e353fe4ac7cc439faa0ff75a800d571b
+signature:
+  inputs: '[{"type": "double", "name": "TV", "required": true}, {"type": "double",
+    "name": "radio", "required": false}, {"type": "double", "name": "newspaper", "required":
+    false}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "float64", "shape": [-1]}}]'
+  params: null
+utc_time_created: '2024-12-21 17:15:28.853851'

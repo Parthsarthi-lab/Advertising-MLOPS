@@ -1,0 +1,16 @@
+artifact_uri: file:///E:/Projects/Advertising-MLOPS/mlruns/295855512483199102/bdf9b22904c04207b9082aeb0c417946/artifacts
+deleted_time: 1734802447687
+end_time: 1734802335070
+entry_point_name: ''
+experiment_id: '295855512483199102'
+lifecycle_stage: deleted
+run_id: bdf9b22904c04207b9082aeb0c417946
+run_name: Best Estimator
+run_uuid: bdf9b22904c04207b9082aeb0c417946
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1734802331300
+status: 3
+tags: []
+user_id: parth

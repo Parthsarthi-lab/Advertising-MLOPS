@@ -8,4 +8,5 @@ ensure
 pyYAML
 Flask
 pytest
+mlflow
 -e .

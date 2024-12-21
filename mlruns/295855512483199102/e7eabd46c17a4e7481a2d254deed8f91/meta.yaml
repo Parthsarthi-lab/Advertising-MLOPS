@@ -1,0 +1,16 @@
+artifact_uri: file:///E:/Projects/Advertising-MLOPS/mlruns/295855512483199102/e7eabd46c17a4e7481a2d254deed8f91/artifacts
+deleted_time: 1734802447708
+end_time: 1734801336294
+entry_point_name: ''
+experiment_id: '295855512483199102'
+lifecycle_stage: deleted
+run_id: e7eabd46c17a4e7481a2d254deed8f91
+run_name: overjoyed-fowl-97
+run_uuid: e7eabd46c17a4e7481a2d254deed8f91
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1734801333182
+status: 3
+tags: []
+user_id: parth

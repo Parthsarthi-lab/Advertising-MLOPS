@@ -1,0 +1,16 @@
+artifact_uri: file:///E:/Projects/Advertising-MLOPS/mlruns/295855512483199102/d5a08b879787413c98b0edf49df0714e/artifacts
+deleted_time: 1734802447693
+end_time: 1734802331253
+entry_point_name: ''
+experiment_id: '295855512483199102'
+lifecycle_stage: deleted
+run_id: d5a08b879787413c98b0edf49df0714e
+run_name: colorful-slug-126
+run_uuid: d5a08b879787413c98b0edf49df0714e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1734802327605
+status: 3
+tags: []
+user_id: parth

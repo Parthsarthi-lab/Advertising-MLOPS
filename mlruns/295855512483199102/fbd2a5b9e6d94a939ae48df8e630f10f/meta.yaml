@@ -1,0 +1,16 @@
+artifact_uri: file:///E:/Projects/Advertising-MLOPS/mlruns/295855512483199102/fbd2a5b9e6d94a939ae48df8e630f10f/artifacts
+deleted_time: 1734802447693
+end_time: 1734802327580
+entry_point_name: ''
+experiment_id: '295855512483199102'
+lifecycle_stage: deleted
+run_id: fbd2a5b9e6d94a939ae48df8e630f10f
+run_name: thundering-trout-157
+run_uuid: fbd2a5b9e6d94a939ae48df8e630f10f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1734802323138
+status: 3
+tags: []
+user_id: parth
