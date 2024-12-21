@@ -66,6 +66,10 @@ class ModelTrainer:
                 final_model = LinearRegression(**best_hyperparams)
                 final_model.fit(xtrain, ytrain)
 
+                # Step 4: Evaluate the final model on the test set
+                final_test_score = final_model.score(xtest, y_test)
+                mlflow.log_metric("R2 final test set", final_test_score)
+
                 signature = infer_signature(xtrain, final_model.predict(xtrain))
                 mlflow.sklearn.log_model(final_model, artifact_path="final_model", signature=infer_signature(xtrain, final_model.predict(xtrain)), registered_model_name="FinalModel")
 
