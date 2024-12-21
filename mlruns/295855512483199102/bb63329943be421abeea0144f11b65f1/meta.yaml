@@ -1,8 +1,9 @@
 artifact_uri: file:///E:/Projects/Advertising-MLOPS/mlruns/295855512483199102/bb63329943be421abeea0144f11b65f1/artifacts
+deleted_time: 1734806125809
 end_time: 1734802420064
 entry_point_name: ''
 experiment_id: '295855512483199102'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: bb63329943be421abeea0144f11b65f1
 run_name: Best Estimator
 run_uuid: bb63329943be421abeea0144f11b65f1

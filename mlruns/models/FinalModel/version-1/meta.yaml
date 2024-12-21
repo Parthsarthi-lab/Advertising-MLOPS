@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1734806325138
+current_stage: None
+description: ''
+last_updated_timestamp: 1734806325138
+name: FinalModel
+run_id: 0490ecf3136d47508074c154f6424753
+run_link: ''
+source: file:///E:/Projects/Advertising-MLOPS/mlruns/0/0490ecf3136d47508074c154f6424753/artifacts/final_model
+status: READY
+status_message: null
+storage_location: file:///E:/Projects/Advertising-MLOPS/mlruns/0/0490ecf3136d47508074c154f6424753/artifacts/final_model
+user_id: null
+version: 1

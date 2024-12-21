@@ -1,0 +1,16 @@
+artifact_uri: file:///E:/Projects/Advertising-MLOPS/mlruns/0/0490ecf3136d47508074c154f6424753/artifacts
+deleted_time: 1734806462271
+end_time: 1734806325146
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: deleted
+run_id: 0490ecf3136d47508074c154f6424753
+run_name: Final Model Training
+run_uuid: 0490ecf3136d47508074c154f6424753
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1734806321131
+status: 3
+tags: []
+user_id: parth

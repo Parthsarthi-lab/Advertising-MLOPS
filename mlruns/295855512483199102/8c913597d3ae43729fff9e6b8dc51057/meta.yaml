@@ -1,0 +1,15 @@
+artifact_uri: file:///E:/Projects/Advertising-MLOPS/mlruns/295855512483199102/8c913597d3ae43729fff9e6b8dc51057/artifacts
+end_time: 1734806139908
+entry_point_name: ''
+experiment_id: '295855512483199102'
+lifecycle_stage: active
+run_id: 8c913597d3ae43729fff9e6b8dc51057
+run_name: lyrical-bug-95
+run_uuid: 8c913597d3ae43729fff9e6b8dc51057
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1734806135163
+status: 3
+tags: []
+user_id: parth

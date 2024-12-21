@@ -2,8 +2,9 @@ import sys
 import os
 import json
 import joblib
+import mlflow
 from pathlib import Path
-
+from mlflow.models import infer_signature
 import numpy as np
 from sklearn.linear_model import LinearRegression
 
@@ -46,25 +47,27 @@ class ModelTrainer:
         except Exception as e:
             handle_exception(e, ModelTrainingError)
 
-    def train_model(self, xtrain, xtest, ytrain, ytest):
+    def train_model(self, xtrain,xtest, ytrain, y_test):
         try:
-            info_logger.info("Training final model started")
+            mlflow.set_tracking_uri("http://127.0.0.1:5000")
+            mlflow.set_experiment("Final Model Training Experiment")
+            with mlflow.start_run(run_name="Final Model Training"):
+                
+                # Step 1: Load the best estimator from MLflow
+                best_model_uri = "models:/BestEstimatorModel/latest"  # Retrieve latest registered model
+                best_model = mlflow.sklearn.load_model(best_model_uri)
+                
+                # Step 2: Extract hyperparameters from the best model
+                best_hyperparams = self.filter_hyperparams(best_model.get_params())
+                
+                mlflow.log_params(best_hyperparams)
 
-            # Construct the full path to the hyperparameters file
-            hyperparams_file_path = os.path.join(self.config.best_model_params, "best_params.json")
-            
-            # Load the hyperparameters from the JSON file
-            with open(hyperparams_file_path, 'r') as f:
-                hyperparams = json.load(f)
+                # Step 3: Train the final model using the best hyperparameters
+                final_model = LinearRegression(**best_hyperparams)
+                final_model.fit(xtrain, ytrain)
 
-            # Filter the hyperparameters of the linear regression model
-            hyperparams = self.filter_hyperparams(hyperparams)
-            
-            final_model = LinearRegression(**hyperparams)
-
-            final_model.fit(xtrain, ytrain)
-
-            info_logger.info("Final model trained")
+                signature = infer_signature(xtrain, final_model.predict(xtrain))
+                mlflow.sklearn.log_model(final_model, artifact_path="final_model", signature=infer_signature(xtrain, final_model.predict(xtrain)), registered_model_name="FinalModel")
 
             return final_model
         except Exception as e:

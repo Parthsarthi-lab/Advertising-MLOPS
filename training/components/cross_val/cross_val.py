@@ -166,7 +166,7 @@ class CrossVal:
                 with open(best_model_params_path, 'w') as f:
                     json.dump(serializable_params, f, indent=4)
 
-                mlflow.sklearn.log_model(grid_search.best_estimator_, artifact_path="best_model", signature= signature)
+                mlflow.sklearn.log_model(grid_search.best_estimator_, artifact_path="best_model", signature= signature, registered_model_name="BestEstimatorModel")
 
             info_logger.info("Cross Validation completed")
         except Exception as e:

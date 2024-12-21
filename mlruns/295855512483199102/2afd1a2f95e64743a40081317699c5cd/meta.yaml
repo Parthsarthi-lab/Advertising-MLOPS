@@ -1,8 +1,9 @@
 artifact_uri: file:///E:/Projects/Advertising-MLOPS/mlruns/295855512483199102/2afd1a2f95e64743a40081317699c5cd/artifacts
+deleted_time: 1734806125806
 end_time: 1734802417170
 entry_point_name: ''
 experiment_id: '295855512483199102'
-lifecycle_stage: active
+lifecycle_stage: deleted
 run_id: 2afd1a2f95e64743a40081317699c5cd
 run_name: bouncy-crane-832
 run_uuid: 2afd1a2f95e64743a40081317699c5cd
