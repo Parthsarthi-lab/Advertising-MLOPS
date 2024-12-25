@@ -133,10 +133,8 @@ class CrossVal:
                     mlflow.log_metric("mean_test_score", row['mean_test_score'])
 
                     # Save and log the intermediate model
-                    intermediate_model_path = os.path.join(self.config.best_model_params, f'model_combination_{idx}.joblib')
                     pipeline.set_params(**row['params'])  # Set parameters for this combination
                     pipeline.fit(X, y)  # Fit the pipeline
-                    joblib.dump(pipeline, intermediate_model_path)
 
                     y_pred = pipeline.predict(X)
                     signature = infer_signature(X, y_pred)
@@ -148,27 +146,14 @@ class CrossVal:
                 best_params = grid_search.best_params_
                 best_score = grid_search.best_score_
 
-                with open(self.config.STATUS_FILE, "a") as f:
-                    f.write(f"Best params for Model: {str(best_params)}\n")
-                    f.write(f"Best scoring(R2) for Model: {str(best_score)}\n")
-
                 mlflow.log_params(best_params)
                 mlflow.log_metric("best_score", best_score)
-
-                # Save and log the best estimator
-                best_model_path = os.path.join(self.config.best_model_params, 'best_model.joblib')
-                joblib.dump(grid_search.best_estimator_, best_model_path)
-
+        
+                info_logger.info()
+                info_logger.info(grid_search.best_estimator_)
+                
                 y_pred = grid_search.best_estimator_.predict(X)
                 signature = infer_signature(X, y_pred)
-
-                # Save the best model parameters as a JSON file
-                best_model_params_path = os.path.join(self.config.best_model_params, f'best_params.json')
-                best_model_params = grid_search.best_estimator_.get_params()
-                serializable_params = {k: v for k, v in best_model_params.items() if self.is_json_serializable(v)}
-
-                with open(best_model_params_path, 'w') as f:
-                    json.dump(serializable_params, f, indent=4)
 
                 mlflow.sklearn.log_model(grid_search.best_estimator_, artifact_path="best_model", signature= signature, registered_model_name="BestEstimatorModel")
 

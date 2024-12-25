@@ -1,4 +1,0 @@
-[('preprocessor', ColumnTransformer(transformers=[('num',
-                                 Pipeline(steps=[('imputer', SimpleImputer()),
-                                                 ('scaler', StandardScaler())]),
-                                 Index(['TV', 'radio', 'newspaper'], dtype='object'))])), ('regressor', LinearRegression())]

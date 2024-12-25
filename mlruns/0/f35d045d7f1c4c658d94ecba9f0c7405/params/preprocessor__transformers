@@ -1,1 +1,0 @@
-[('num', Pipeline(steps=[('imputer', SimpleImputer()), ('scaler', StandardScaler())]), Index(['TV', 'radio', 'newspaper'], dtype='object'))]
